@@ -2,17 +2,18 @@ const mongoose = require('mongoose')
 const Schema   = mongoose.Schema
 
 const userSchema = new Schema({
-  username: String,
+  firstname: String,
+  lastname: String,
+  address: String,
+  dniNumber: String,
+  imgDniFront: String,
+  imgDniBack: String,
+  phone: String,
   password: String,
   email: String,
-  role: {
-    type: String,
-    enum: [
-      'admin',
-      'user',
-      'professional'
-    ]
-  }
+  cardNumber: Number,
+  cardCVV: Number,
+  cardExpiredDate: Date
 }, {
   timestamps: {
     createdAt: 'created_at',
@@ -20,5 +21,5 @@ const userSchema = new Schema({
   }
 })
 
-const User = mongoose.model('User', userSchema)
-module.exports = User
+
+module.exports = mongoose.model('User', userSchema)
