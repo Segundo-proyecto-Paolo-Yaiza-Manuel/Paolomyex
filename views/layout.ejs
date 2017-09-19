@@ -11,17 +11,18 @@
 
       <% if(!user){ %>
 
-        <li><a class="login"href="/signup">signup</a></li>
-        <li><a class="login"href="/login"> login</a></li>
+        <li><a class="login" href="/signup">signup</a></li>
+        <li><a class="login" href="/login"> login</a></li>
 
       <% }else{ %>
-        <li><a class="login"href="/logout">logout</a></li>
+        <li><a class="login" href="/logout">logout</a></li>
+        <li><a class="" href="/wallet/new">create wallet</a></li>
 
       <% } %>
     </nav>
 
     <%- body -%>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="javascripts/main.js"></script>
+    <!-- <script src="javausscripts/main.js"></script> -->
   </body>
 </html>

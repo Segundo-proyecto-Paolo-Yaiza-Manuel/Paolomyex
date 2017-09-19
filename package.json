@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "dev": "DEBUG=server:* nodemon ./bin/www"
+    "dev": "DEBUG=*:* nodemon ./bin/www"
   },
   "dependencies": {
     "bcrypt": "^1.0.2",

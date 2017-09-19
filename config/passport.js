@@ -23,9 +23,11 @@ module.exports = function() {
       passReqToCallback: true
     },
     (req, username, password, next) => {
+
+      console.log('AAAAAAAAAAAAAAAA');
       process.nextTick(() => {
         User.findOne({
-          'username': username
+          'dniNumber': username
         }, (err, user) => {
           if (err) {
             return next(err);
@@ -34,15 +36,14 @@ module.exports = function() {
           if (user) {
             return next(null, false)
           } else {
-            const {
-              username,
-              email,
-              password
-            } = req.body;
-            const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+            const hashPass = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8), null);
             const newUser = new User({
-              username,
-              email,
+              firstname: req.body.firstame,
+              lastname: req.body.lastname,
+              address: req.body.address,
+              dniNumber: req.body.dniNumber,
+              phone: req.body.phoneNumber,
+              email: req.body.email,
               password: hashPass
             });
 
