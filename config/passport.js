@@ -4,6 +4,7 @@ const User = require('../models/User')
 const bcrypt = require("bcrypt")
 const dotenv = require("dotenv").load()
 
+
 module.exports = function() {
   passport.serializeUser((user, cb) => {
     cb(null, user.id)
@@ -41,10 +42,12 @@ module.exports = function() {
               firstname: req.body.firstame,
               lastname: req.body.lastname,
               address: req.body.address,
-              dniNumber: req.body.dniNumber,
+              dniNumber: req.body.username,
               phone: req.body.phoneNumber,
               email: req.body.email,
-              password: hashPass
+              password: hashPass,
+              imgDniFront: `/uploads/${req.files.dniFront.filename}`,
+              imgDniBack: `/uploads/${req.files.dniBack.filename}`
             });
 
             newUser.save((err) => {
