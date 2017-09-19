@@ -61,16 +61,16 @@ module.exports = function() {
       });
     }));
 
-  passport.use('local-login', new LocalStrategy((username, password, next) => {
+  passport.use('local-login', new LocalStrategy((dniNumber, password, next) => {
     User.findOne({
-      username
+      dniNumber
     }, (err, user) => {
       if (err) {
         return next(err)
       }
       if (!user) {
         return next(null, false, {
-          message: "Incorrect username"
+          message: "Incorrect dni"
         })
       }
       if (!bcrypt.compareSync(password, user.password)) {
