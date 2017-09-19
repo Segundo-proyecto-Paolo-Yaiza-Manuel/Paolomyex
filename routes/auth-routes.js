@@ -19,6 +19,7 @@ authRoutes.post('/login', passport.authenticate('local-login', {
   failureRedirect : '/login'
 }))
 
+
 authRoutes.get("/logout", AuthController.logout)
 
 module.exports = authRoutes

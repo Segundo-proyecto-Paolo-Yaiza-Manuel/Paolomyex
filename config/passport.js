@@ -9,6 +9,7 @@ module.exports = function() {
     cb(null, user.id)
   })
 
+
   passport.deserializeUser((id, cb) => {
 
     User.findById(id, (err, user) => {
@@ -27,7 +28,7 @@ module.exports = function() {
       console.log('AAAAAAAAAAAAAAAA');
       process.nextTick(() => {
         User.findOne({
-          'dniNumber': username
+          'username': username
         }, (err, user) => {
           if (err) {
             return next(err);
@@ -41,7 +42,7 @@ module.exports = function() {
               firstname: req.body.firstame,
               lastname: req.body.lastname,
               address: req.body.address,
-              dniNumber: req.body.dniNumber,
+              dniNumber: req.body.username,
               phone: req.body.phoneNumber,
               email: req.body.email,
               password: hashPass
