@@ -1,15 +1,39 @@
-<form action="/signup" method="post" id="form-container">
+<form action="/signup" method="post" id="form-container" enctype="multipart/form-data">
   <div class="field">
-    <label for="username">USERNAME</label><br><br>
-    <input class="boxtext" id="username" type="text" name="username" placeholder="JonSnow">
+    <label for="firstname">First Name: </label>
+    <input id="firstname" type="text" name="firstname" placeholder="First Name">
   </div>
   <div class="field">
-    <label for="mail">EMAIL</label><br><br>
-    <input class="boxtext" id="mail" type="mail" name="email" placeholder="mail">
+    <label for="lastname">Last Name: </label>
+    <input id="lastname" type="text" name="lastname" placeholder="Last Name">
   </div>
   <div class="field">
-    <label for="password">PASSWORD</label><br><br>
-    <input class="boxtext" id="password" type="password" name="password" placeholder="Your password">
+    <label for="address">Address: </label>
+    <input id="address" type="text" name="address" placeholder="Address">
+  </div>
+  <div class="field">
+    <label for="dniNumber">DNI: </label>
+    <input id="dniNumber" type="text" name="dniNumber" placeholder="DNI Number">
+  </div>
+  <div class="field">
+    <label for="dniFront">DNI Front Photo: </label>
+    <input id="dniFront" type="file" name="dniFront">
+  </div>
+  <div class="field">
+    <label for="dniBack">DNI Back Photo: </label>
+    <input id="dniBack" type="file" name="dniBack">
+  </div>
+  <div class="field">
+    <label for="phoneNumber">Phone Number: </label>
+    <input id="phoneNumber" type="text" name="phoneNumber" placeholder="Phone Number">
+  </div>
+  <div class="field">
+    <label for="mail">Email: </label>
+    <input id="mail" type="mail" name="email" placeholder="Mail">
+  </div>
+  <div class="field">
+    <label for="password">Password: </label>
+    <input id="password" type="password" name="password" placeholder="Your password">
   </div>
 
   <% if (typeof message !== "undefined") { %>
