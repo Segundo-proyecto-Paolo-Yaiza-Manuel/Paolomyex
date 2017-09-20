@@ -11,18 +11,17 @@ module.exports = {
       money: req.body.quantity
     }
 
-    console.log('==============addMoneyToAccount');
     User.findByIdAndUpdate(userId, cardInfo, { new: true }, (err, theUser) => {
       if (err) return next(err)
 
-      req.session.currentUser = theUser
+      req.user = theUser
 
       res.redirect('/')
     })
   },
 
   editUserGet: (req, res) => {
-    res.render('users/edit')
+    res.render('users/edit', {user: req.user})
   },
 
   goHome: (req, res) => {
