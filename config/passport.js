@@ -24,7 +24,7 @@ module.exports = function() {
   passport.use('local-signup', new LocalStrategy({
       passReqToCallback: true
     },
-    (req, username, password, next) => {
+    (req, dniNumber, password, next) => {
       process.nextTick(() => {
         User.findOne({
           'username': dniNumber
