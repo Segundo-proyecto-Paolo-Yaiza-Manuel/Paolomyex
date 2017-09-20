@@ -27,6 +27,7 @@ module.exports = function() {
     (req, dniNumber, password, next) => {
 
       console.log('AAAAAAAAAAAAAAAA');
+      console.log(req.files)
       process.nextTick(() => {
         User.findOne({
           'username': dniNumber
@@ -34,7 +35,6 @@ module.exports = function() {
           if (err) {
             return next(err);
           }
-
           if (user) {
             return next(null, false)
           } else {
@@ -47,8 +47,8 @@ module.exports = function() {
               phone: req.body.phoneNumber,
               email: req.body.email,
               password: hashPass,
-              imgDniFront: `/uploads/${req.files.filename}`,
-              imgDniBack: `/uploads/${req.files.filename}`
+              imgDniFront: `${req.files.dniFront[0].path}`,
+              imgDniBack: `${req.files.dniBack[0].path}`
             });
 
             newUser.save((err) => {
