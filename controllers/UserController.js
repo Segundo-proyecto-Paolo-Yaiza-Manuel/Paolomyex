@@ -24,7 +24,9 @@ module.exports = {
     res.render('users/edit')
   },
 
-  goHome: (req, res) => {
+
+
+  goHomeGet: (req, res) => {
     res.render('home')
   },
 

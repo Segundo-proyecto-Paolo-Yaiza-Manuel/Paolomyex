@@ -1,0 +1,20 @@
+<h2>EDIT-WALLET</h2>
+<form action="/wallet/edit" method="post">
+  <div class="form-group">
+    <label for="cardNumber">Card Number: </label>
+    <input id="cardNumber" class="form-control" type="number" name="cardNumber" maxlength="16" min="0" value="<%= user.cardNumber %>" required>
+  </div>
+  <div class="form-group">
+    <label for="cvv">CVV: </label>
+    <input id="cvv" class="form-control" type="number" name="cvv" maxlength="3" min="0" value="<%= user.cardCVV %>" required>
+  </div>
+  <div class="form-group">
+    <label for="expiredDate">Expired Date: </label>
+    <input id="expiredDate" class="form-control" type="date" name="expiredDate" value="<%= user.cardExpiredDate %>" required>
+  </div>
+  <div class="form-group">
+    <label for="quantity">Quantity in $: </label>
+    <input id="quantity" class="form-control" type="number" name="quantity" step="0.01" min="0" value="<%= user.money %>" required>
+  </div>
+  <button>EDIT</button>
+</form>

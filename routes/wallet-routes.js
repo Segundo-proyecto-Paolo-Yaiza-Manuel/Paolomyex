@@ -4,5 +4,7 @@ const WalletController = require("../controllers/WalletController")
 
 walletRoutes.get("/new", ensureLoggedIn('/'), WalletController.newWalletGet)
 walletRoutes.post('/new', ensureLoggedIn('/'), WalletController.newWalletPost)
-
+walletRoutes.get("/edit", ensureLoggedIn('/'), WalletController.editWalletGet)
+walletRoutes.post("/edit", ensureLoggedIn('/'), WalletController.editWalletPost)
+walletRoutes.get("/show", ensureLoggedIn('/'), WalletController.showWalletGet)
 module.exports = walletRoutes

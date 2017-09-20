@@ -4,6 +4,6 @@ const userController = require('../controllers/UserController')
 router.get('/edit', userController.editUserGet)
 router.post('/edit', userController.editUserPost)
 router.post('/addMoneyToAccount', userController.addMoneyToAccount)
-router.get('/home', userController.goHome)
+router.get('/home', userController.goHomeGet)
 
 module.exports = router
