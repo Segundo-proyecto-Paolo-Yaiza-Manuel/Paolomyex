@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt")
 
 module.exports = {
   addMoneyToAccount: (req, res) => {
-    const userId = req.session.currentUser._id
+    const userId = req.user._id
     const cardInfo = {
       cardNumber: req.body.cardNumber,
       cardCVV: req.body.cvv,
@@ -21,7 +21,7 @@ module.exports = {
   },
 
   editUserGet: (req, res) => {
-    res.render('users/edit', {user: req.user})
+    res.render('users/edit')
   },
 
   goHome: (req, res) => {
