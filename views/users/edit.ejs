@@ -1,0 +1,54 @@
+<h2><%= title %></h2>
+<form action="/users/<%= user._id %>" method="POST">
+  <div class="field">
+    <label for="firstname">First Name: </label>
+    <input id="firstname" type="text" name="firstname" placeholder="First Name" value="<% user.firstname%>">
+  </div>
+
+  <div class="field">
+    <label for="lastname">Last Name: </label>
+    <input id="lastname" type="text" name="lastname" placeholder="Last Name" value="<% user.lastname%>">
+  </div>
+
+  <div class="field">
+    <label for="address">Address: </label>
+    <input id="address" type="text" name="address" placeholder="Address" value="<% user.address%>">
+  </div>
+  <div class="field">
+    <label for="dniNumber">DNI: </label>
+    <input id="dniNumber" type="text" name="username" placeholder="DNI Number" value="<% user.dniNumber%>">
+  </div>
+  <div class="field">
+    <label for="dniFront">DNI Front Photo: </label>
+    <input id="dniFront" type="file" name="dniFront" value="<% user.imgDniFront%>">
+  </div>
+  <div class="field">
+    <label for="dniBack">DNI Back Photo: </label>
+    <input id="dniBack" type="file" name="dniBack" value="<% user.imgDniBack%>">
+  </div>
+  <div class="field">
+    <label for="phoneNumber">Phone Number: </label>
+    <input id="phoneNumber" type="text" name="phoneNumber" placeholder="Phone Number" value="<% user.phone%>">
+  </div>
+  <div class="field">
+    <label for="mail">Email: </label>
+    <input id="mail" type="mail" name="email" placeholder="Mail" value="<% user.email%>">
+  </div>
+  <div class="field">
+    <label for="password">Password: </label>
+    <input id="password" type="password" name="password" placeholder="Your password" value="<% user.password%>">
+  </div>
+  <div class="field">
+    <label for="cardNumber">Password: </label>
+    <input id="cardNumber" type="text" name="cardNumber" placeholder="Your card number" value="<% user.cardNumber%>">
+  </div>
+  <div class="field">
+    <label for="cardCCV">Password: </label>
+    <input id="cardCCV" type="text" name="cardCCV" placeholder="Your CVV" value="<% user.cardCCV%>">
+  </div>
+  <div class="field">
+    <label for="cardExpiredDate">Password: </label>
+    <input id="cardExpiredDate" type="text" name="cardExpiredDate" placeholder="Expiry Date" value="<% user.cardExpiredDate%>">
+  </div>
+  <button type="submit">Update User</button>
+</form>
