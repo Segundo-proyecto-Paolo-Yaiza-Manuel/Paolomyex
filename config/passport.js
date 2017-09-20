@@ -37,7 +37,7 @@ module.exports = function() {
           } else {
             const hashPass = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8), null);
             const newUser = new User({
-              firstname: req.body.firstame,
+              firstname: req.body.firstname,
               lastname: req.body.lastname,
               address: req.body.address,
               dniNumber: req.body.username,
