@@ -3,12 +3,15 @@
 
 <p>HOME!</p>
 
-<% if(user.username) { %>
-  <h2>Hola usuario <%= user.username %></h2>
+<% if(user) { %>
+  <h2>Hola usuario <%= user.firstname %></h2>
   <form action="/logout" method="POST">
     <button>Logout</button>
+    <a href="/">Create-Wallet</a>
+    <a href="/">Edit-Profile</a>
   </form>
-<% }else{ %>
-  <a href="/">Wallet</a>
-  <a href="/">Edit</a>
-<% } %>
+  <% }else{ %>
+    <div class="error-message">
+      <%= message %>
+    </div>
+    <% } %>
