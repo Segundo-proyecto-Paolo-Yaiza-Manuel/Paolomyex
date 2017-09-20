@@ -6,10 +6,12 @@ require('./config/express')(app)
 const authRoutes = require("./routes/auth-routes")
 const index = require('./routes/index')
 const walletRoutes = require('./routes/wallet-routes')
+const usersRoutes = require('./routes/user-routes')
 
 app.use('/', authRoutes)
 app.use('/', index)
 app.use('/wallet', walletRoutes)
+app.use('/users', usersRoutes)
 
 require('./config/error-handler')(app)
 module.exports = app

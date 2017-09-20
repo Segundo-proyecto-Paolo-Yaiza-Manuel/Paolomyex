@@ -41,7 +41,7 @@ module.exports = function() {
               firstname: req.body.firstame,
               lastname: req.body.lastname,
               address: req.body.address,
-              dniNumber: req.body.dniNumber,
+              dniNumber: req.body.username,
               phone: req.body.phoneNumber,
               email: req.body.email,
               password: hashPass

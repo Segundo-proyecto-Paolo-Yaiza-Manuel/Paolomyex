@@ -13,7 +13,8 @@ const userSchema = new Schema({
   email: String,
   cardNumber: Number,
   cardCVV: Number,
-  cardExpiredDate: Date
+  cardExpiredDate: Date,
+  money: Number
 }, {
   timestamps: {
     createdAt: 'created_at',
