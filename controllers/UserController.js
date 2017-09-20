@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt")
 
 module.exports = {
   addMoneyToAccount: (req, res) => {
-    const userId = req.session.currentUser._id
+    const userId = req.user._id
     const cardInfo = {
       cardNumber: req.body.cardNumber,
       cardCVV: req.body.cvv,
@@ -11,11 +11,10 @@ module.exports = {
       money: req.body.quantity
     }
 
-    console.log('==============addMoneyToAccount');
     User.findByIdAndUpdate(userId, cardInfo, { new: true }, (err, theUser) => {
       if (err) return next(err)
 
-      req.session.currentUser = theUser
+      req.user = theUser
 
       res.redirect('/')
     })
@@ -29,27 +28,27 @@ module.exports = {
     res.render('home')
   },
 
-  editUserPost: (req, res) => {
-    const userId = req.session.currentUser._id
+  editUserPost: (req, res, next) => {
+    const userId = req.user._id
     const hashPass = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8), null);
     const userInfo = {
-      firstname: req.body.firstame,
+      firstname: req.body.firstname,
       lastname: req.body.lastname,
       address: req.body.address,
       dniNumber: req.body.username,
       phone: req.body.phoneNumber,
       email: req.body.email,
-      password: hashPass,
-      cardNumber: req.body.cardNumber,
-      cardCVV: req.body.cvv,
-      cardExpiredDate: req.body.expiredDate,
-      money: req.body.quantity
+      password: hashPass
+      // cardNumber: req.body.cardNumber,
+      // cardCVV: req.body.cvv,
+      // cardExpiredDate: req.body.expiredDate,
+      // money: req.body.quantity
     }
 
-    User.findByIdAndUpdate(userId, cardInfo, { new: true }, (err, theUser) => {
+    User.findByIdAndUpdate(userId, userInfo, { new: true }, (err, theUser) => {
       if (err) return next(err)
 
-      req.session.currentUser = theUser
+      req.user = theUser
 
       res.redirect('/')
     })

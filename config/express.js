@@ -32,7 +32,6 @@ module.exports = function(app) {
 
   app.use(function(req, res, next) {
     res.locals.user = req.user;
-    req.session.currentUser = req.user
     res.locals.title = 'BASIC BOILERPLATE!!!'
     next()
   })

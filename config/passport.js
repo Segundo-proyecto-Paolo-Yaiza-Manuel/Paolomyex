@@ -25,12 +25,9 @@ module.exports = function() {
       passReqToCallback: true
     },
     (req, dniNumber, password, next) => {
-
-      console.log('AAAAAAAAAAAAAAAA');
-      console.log(req.files)
       process.nextTick(() => {
         User.findOne({
-          'username': dniNumber
+          dniNumber
         }, (err, user) => {
           if (err) {
             return next(err);
