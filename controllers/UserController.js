@@ -24,6 +24,10 @@ module.exports = {
     res.render('users/edit', {user: req.user})
   },
 
+  goHome: (req, res) => {
+    res.render('home')
+  },
+
   editUserPost: (req, res) => {
     const userId = req.session.currentUser._id
     const hashPass = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8), null);
