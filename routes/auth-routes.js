@@ -18,7 +18,7 @@ authRoutes.post('/signup', upload.fields([{
 
 authRoutes.get('/login',ensureLogin.ensureLoggedOut('/'), AuthController.login)
 authRoutes.post('/login', passport.authenticate('local-login', {
-  successRedirect : '/',
+  successRedirect : '/users/home',
   failureRedirect : '/login'
 }))
 
