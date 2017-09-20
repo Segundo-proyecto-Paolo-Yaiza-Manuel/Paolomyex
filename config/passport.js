@@ -46,8 +46,8 @@ module.exports = function() {
               phone: req.body.phoneNumber,
               email: req.body.email,
               password: hashPass,
-              imgDniFront: `/uploads/${req.files.dniFront.filename}`,
-              imgDniBack: `/uploads/${req.files.dniBack.filename}`
+              imgDniFront: `/uploads/${req.files.filename}`,
+              imgDniBack: `/uploads/${req.files.filename}`
             });
 
             newUser.save((err) => {
