@@ -27,7 +27,7 @@ module.exports = function() {
     (req, username, password, next) => {
       process.nextTick(() => {
         User.findOne({
-          'username': username
+          'username': dniNumber
         }, (err, user) => {
           if (err) {
             return next(err);
