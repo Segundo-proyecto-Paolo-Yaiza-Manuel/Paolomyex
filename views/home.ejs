@@ -3,7 +3,7 @@
 
 <p>HOME!</p>
 
-<% if(user.dniNumber) { %>
+<% if(user.username) { %>
   <h2>Hola usuario <%= user.username %></h2>
   <form action="/logout" method="POST">
     <button>Logout</button>

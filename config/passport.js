@@ -23,12 +23,12 @@ module.exports = function() {
   passport.use('local-signup', new LocalStrategy({
       passReqToCallback: true
     },
-    (req, username, password, next) => {
+    (req, dniNumber, password, next) => {
 
       console.log('AAAAAAAAAAAAAAAA');
       process.nextTick(() => {
         User.findOne({
-          'username': username
+          'username': dniNumber
         }, (err, user) => {
           if (err) {
             return next(err);
