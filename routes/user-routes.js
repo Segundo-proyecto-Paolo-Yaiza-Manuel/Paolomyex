@@ -5,5 +5,6 @@ router.get('/edit', userController.editUserGet)
 router.post('/edit', userController.editUserPost)
 router.post('/addMoneyToAccount', userController.addMoneyToAccount)
 router.get('/home', userController.goHome)
+router.get('/userinfo', userController.showUserGet)
 
 module.exports = router
