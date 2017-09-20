@@ -9,6 +9,7 @@ module.exports = function() {
     cb(null, user.id)
   })
 
+
   passport.deserializeUser((id, cb) => {
 
     User.findById(id, (err, user) => {
@@ -27,7 +28,7 @@ module.exports = function() {
       console.log('AAAAAAAAAAAAAAAA');
       process.nextTick(() => {
         User.findOne({
-          'dniNumber': username
+          'username': username
         }, (err, user) => {
           if (err) {
             return next(err);
