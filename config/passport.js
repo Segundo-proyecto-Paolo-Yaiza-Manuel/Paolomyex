@@ -25,9 +25,6 @@ module.exports = function() {
       passReqToCallback: true
     },
     (req, username, password, next) => {
-
-      console.log('AAAAAAAAAAAAAAAA');
-      console.log(req.files)
       process.nextTick(() => {
         User.findOne({
           'username': username
