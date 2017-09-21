@@ -28,9 +28,17 @@ $(document).ready( () => {
   })
 
   $('#init-arbitrage').on('click', (e) => {
-    console.log('CLICK');
+    e.preventDefault()
+    $.ajax({
+      method:  'POST',
+      url:     `/wallets/init-arbitrage`,
+      dataType:'json',
+      data:    {exchange: $('#init-arbitrage').attr('data-exchange'),
+                BTCValue: $('#init-arbitrage').attr('data-value')}
+    })
+    .then(()=>console.log('ENVIADO'))
+    .catch((e)=>console.log(e))
   })
-
 })
 
 function displayMarketValue(infoMarket){
@@ -43,5 +51,8 @@ function displayCheapestOption($parentText, $parentBtns, cheapestOption){
 
   $parentText.append($cheapestOptionText)
   $parentBtns.append($maybeLaterBtn)
-  $('#init-arbitrage').text(`Initialize arbitrage with ${cheapestOption.exchange}`).show()
+  $('#init-arbitrage')
+  .attr('data-exchange', `${cheapestOption.exchange}`)
+  .attr('data-value', `${cheapestOption.BTCValue}`)
+  .text(`Initialize arbitrage with ${cheapestOption.exchange}`).show()
 }
