@@ -4,12 +4,14 @@ module.exports = {
   newCardGet: (req, res) => {
     res.render("card/new")
   },
+
+
   newCardPost: (req, res) => {
     res.render('/')
   },
 
   editCardGet: (req, res) => {
-    res.render('card/edit-wallet')
+    res.render('card/edit-card')
   },
 
   editCardPost: (req, res) => {
