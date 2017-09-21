@@ -1,15 +1,19 @@
 <!--user home-->
 
-
 <p>HOME!</p>
 
 <% if(user) { %>
   <h2>Hola usuario <%= user.firstname %></h2>
   <form action="/logout" method="POST">
     <button>Logout</button>
+    <a href="/">Create-Wallet</a>
+    <a href="/users/edit">Edit-Profile</a>
+    <a href="/card/show">show-wallet</a>
+    <a href="/users/userinfo">Show User</a>
   </form>
-<% }else{ %>
-  <a href="/">Wallet</a>
-  <a href="/">Edit</a>
-  <a href="/users/userinfo">Show User</a>
-<% } %>
+
+  <% }else{ %>
+    <div class="error-message">
+      <%= message %>
+    </div>
+    <% } %>

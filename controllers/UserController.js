@@ -20,12 +20,14 @@ module.exports = {
     })
   },
 
-  editUserGet: (req, res) => {
-    res.render('users/edit')
+
+  goHomeGet: (req, res) => {
+    res.render('home')
   },
 
-  goHome: (req, res) => {
-    res.render('home')
+
+  editUserGet: (req, res) => {
+    res.render('users/edit')
   },
 
   editUserPost: (req, res, next) => {
