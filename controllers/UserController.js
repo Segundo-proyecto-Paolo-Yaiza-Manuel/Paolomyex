@@ -60,7 +60,14 @@ showUserGet: (req, res) => {
   res.render('users/showuser', {
 
   })
-}
+},
 
+userDeleteGet: (req, res) => {
+  const userId = res.locals.user._id
+  User.findByIdAndRemove(userId, (err, user) => {
+    if (err){ return next(err) }
+    res.redirect('/')
+  })
+}
 
 }

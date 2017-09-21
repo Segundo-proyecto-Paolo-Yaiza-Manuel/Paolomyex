@@ -3,20 +3,8 @@ const Schema   = mongoose.Schema
 
 const walletSchema = new Schema({
   name: String,
-  exchangeSite: {
-    type: String,
-    enum: [
-      'Poloniex',
-      'Bittrex',
-      'Kraken'
-    ]
-  },
-  currency: {
-    type: String,
-    enum: [
-      'BTC'
-    ]
-  },
+  exchangeSite: String,
+  currency: String,
   quantity: Number,
   ownerId: {type: Schema.Types.ObjectId, ref:'User'}
 }, {

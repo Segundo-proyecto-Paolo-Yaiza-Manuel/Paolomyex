@@ -6,5 +6,6 @@ router.post('/edit', userController.editUserPost)
 router.post('/addMoneyToAccount', userController.addMoneyToAccount)
 router.get('/home', userController.goHomeGet)
 router.get('/userinfo', userController.showUserGet)
+router.get('/delete', userController.userDeleteGet)
 
 module.exports = router
