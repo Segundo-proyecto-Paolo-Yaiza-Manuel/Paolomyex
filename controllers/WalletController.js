@@ -1,18 +1,18 @@
 const User = require ('../models/User')
 
 module.exports = {
-  newWalletGet: (req, res) => {
+  newCardGet: (req, res) => {
     res.render("wallets/new")
   },
-  newWalletPost: (req, res) => {
+  newCardPost: (req, res) => {
     res.render('/')
   },
 
-  editWalletGet: (req, res) => {
+  editCardGet: (req, res) => {
     res.render('wallets/edit-wallet')
   },
 
-  editWalletPost: (req, res) => {
+  editCardPost: (req, res) => {
     const userId = req.user._id
     const cardInfo = {
       cardNumber: req.body.cardNumber,
@@ -30,15 +30,15 @@ module.exports = {
     })
   },
 
-  showWalletGet: (req, res) => {
+  showCardGet: (req, res) => {
     res.render('wallets/show')
   },
 
-  showWalletPost: (req, res) => {
+  showCardPost: (req, res) => {
     res.render('/')
   },
 
-  deleteWalletGet: (req, res) => {
+  deleteCardGet: (req, res) => {
     const userId = req.user._id
     const cardInfo = {
       cardNumber: "",
