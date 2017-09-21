@@ -2,14 +2,14 @@ const User = require ('../models/User')
 
 module.exports = {
   newCardGet: (req, res) => {
-    res.render("wallets/new")
+    res.render("card/new")
   },
   newCardPost: (req, res) => {
     res.render('/')
   },
 
   editCardGet: (req, res) => {
-    res.render('wallets/edit-wallet')
+    res.render('card/edit-wallet')
   },
 
   editCardPost: (req, res) => {
@@ -31,7 +31,7 @@ module.exports = {
   },
 
   showCardGet: (req, res) => {
-    res.render('wallets/show')
+    res.render('card/show')
   },
 
   showCardPost: (req, res) => {
