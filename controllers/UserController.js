@@ -54,5 +54,13 @@ module.exports = {
 
       res.redirect('/')
     })
-  }
+  },
+
+showUserGet: (req, res) => {
+  res.render('users/showuser', {
+
+  })
+}
+
+
 }
