@@ -15,6 +15,7 @@ module.exports = {
   },
 
   editCardPost: (req, res) => {
+    console.log("entrando en ti")
     const userId = req.user._id
     const cardInfo = {
       cardNumber: req.body.cardNumber,
@@ -28,7 +29,7 @@ module.exports = {
 
       req.user = theUser
 
-      res.redirect('/')
+      res.redirect('/card/show')
     })
   },
 
