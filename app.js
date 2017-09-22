@@ -1,6 +1,6 @@
 var schedule = require('node-schedule')
 const app = require('express')()
-const User = require("./models/User")
+const arbitrageBot = require('./config/arbitrageBot')
 
 require('./config/passport')()
 require('./config/express')(app)
@@ -18,13 +18,7 @@ app.use('/users', usersRoutes)
 app.use('/wallets', walletsRoutes)
 
 
-var bot = schedule.scheduleJob('*/1 * * * *', function(){
-    User.find({ inArbitrage: true })
-    .then(usersInArbitrage => usersInArbitrage.forEach( user => {
-      console.log(`${user.firstname} is doing arbitrage with ${user.money}$`)
-    }))
-  console.log('===========BOT==========')
-})
+var bot = schedule.scheduleJob('*/1 * * * *', arbitrageBot)
 
 require('./config/error-handler')(app)
 module.exports = app
