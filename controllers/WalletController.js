@@ -13,7 +13,7 @@ createWalletPost: (req, res) => {
       name: 'GDAX',
       exchangeSite: 'GDAX',
       currency: 'BTC',
-        ownerId: res.locals.user._id
+      ownerId: res.locals.user._id
     })
     .save()
     .then(()=> console.log('WALLET GDAX CREADA'))
@@ -42,6 +42,18 @@ createWalletGet: (req, res) => {
       wallets: wallets
     })
   })
+},
+
+walletDeletePost: (req, res) => {
+const walletId = req.params.id
+console.log(walletId)
+Wallet.findByIdAndRemove(walletId)
+.then( response => {
+  res.status(200).json({respuesta: walletId})
+}).catch( error => console.log(`8========D ${error}`))
+
+
 }
+
 
 }
