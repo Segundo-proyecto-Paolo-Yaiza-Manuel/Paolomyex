@@ -55,7 +55,7 @@ module.exports = {
 
       req.user = theUser
 
-      res.redirect('/')
+      res.redirect('/card/show')
     })
   },
 
