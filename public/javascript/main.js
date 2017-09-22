@@ -31,7 +31,7 @@ $(document).ready( () => {
     e.preventDefault()
     $.ajax({
       method:  'POST',
-      url:     `/wallets/init-arbitrage`,
+      url:     `/users/init-arbitrage`,
       dataType:'json',
       data:    {exchange: $('#init-arbitrage').attr('data-exchange'),
                 BTCValue: $('#init-arbitrage').attr('data-value')}
