@@ -1,4 +1,6 @@
+var schedule = require('node-schedule')
 const app = require('express')()
+const arbitrageBot = require('./config/arbitrageBot')
 
 require('./config/passport')()
 require('./config/express')(app)
@@ -14,6 +16,9 @@ app.use('/', index)
 app.use('/card', cardRoutes)
 app.use('/users', usersRoutes)
 app.use('/wallets', walletsRoutes)
+
+
+var bot = schedule.scheduleJob('*/1 * * * *', arbitrageBot)
 
 require('./config/error-handler')(app)
 module.exports = app

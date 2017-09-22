@@ -7,5 +7,8 @@ router.post('/addMoneyToAccount', userController.addMoneyToAccount)
 router.get('/home', userController.goHomeGet)
 router.get('/userinfo', userController.showUserGet)
 router.get('/delete', userController.userDeleteGet)
+router.get('/init-arbitrage', userController.initArbitrageGet)
+router.post('/init-arbitrage', userController.initArbitragePost)
+
 
 module.exports = router
