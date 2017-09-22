@@ -3,14 +3,14 @@
 <p>HOME!</p>
 
 <% if(user) { %>
-  <h2>Hola usuario <%= user.firstname %></h2>
+  <h2>Hola <%= user.firstname %></h2>
   <form action="/logout" method="POST">
-    <button>Logout</button>
-    <a href="/wallets/create">Create-Wallet</a>
-    <a href="/users/edit">Edit-Profile</a>
-    <a href="/card/show">show-card</a>
-    <a href="/users/userinfo">Show User</a>
 
+    <a href="/card/show">Add Money to Account</a>
+    <a href="/wallets/create">Create Wallet</a>
+    <a href="/users/edit">Edit Profile</a>
+    <a href="/users/userinfo">Show User</a>
+    <button>Logout</button>
   </form>
 
   <% }else{ %>
