@@ -16,7 +16,7 @@ module.exports = {
 
       req.user = theUser
 
-      res.redirect('/')
+      res.redirect('/users/home')
     })
   },
 

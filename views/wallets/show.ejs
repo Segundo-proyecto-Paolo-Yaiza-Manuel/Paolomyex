@@ -1,6 +1,11 @@
 
+<h1><%= title %></h1>
 
 
-<h1>MY WALLETS</h1>
-
-<h3></h3>
+<% wallets.forEach((wallet) => { %>
+<div>
+  <h2> <%= wallet.exchangeSite %></h2>
+  <h3><%= wallet.currency %></h3>
+  <button class='delete-wallet' data-id-wallet='<%= wallet._id %>'>Borrar</button>
+</div>
+  <%  }) %>

@@ -1,7 +1,20 @@
 const gdaxAPI = new GDAXHandler("https://api-public.sandbox.gdax.com")
 const bitfinexAPI = new BitfinexHandler("https://api.bitfinex.com")
 
-$(document).ready( () => {
+
+
+$(document).ready( function() {
+  $('.delete-wallet').on('click', function(e){
+    const id = $(this).attr('data-id-wallet');
+    $.ajax({
+    url: `/wallets/delete/${id}`,
+    type: 'POST',
+  }).then(res => {
+    $(e.target).parent().remove()
+  })
+})
+
+
 
   $('#select-currency').on('change', (e) => {
     const market = $('#select-currency').val()

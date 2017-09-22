@@ -2,23 +2,58 @@ const Wallet = require('../models/Wallet')
 
 module.exports = {
 
-  selectExGet: (req, res) => {
-    res.render('wallets/create')
-  },
+selectExGet: (req, res) => {
+  res.render('wallets/create')
+},
 
-  createWalletGet: (req, res) => {
-    res.render('wallets/show')
-  },
+createWalletPost: (req, res) => {
+  const GDAXClicked = req.body.exchangeGDAX
+  if(GDAXClicked == 'on')
+    new Wallet({
+      name: 'GDAX',
+      exchangeSite: 'GDAX',
+      currency: 'BTC',
+      ownerId: res.locals.user._id
+    })
+    .save()
+    .then(()=> console.log('WALLET GDAX CREADA'))
+  const BitfinexClicked = req.body.exchangeBitfinex
+  if(BitfinexClicked == 'on')
+  new Wallet({
+      name: 'Bitfinex',
+      exchangeSite: 'Bitfinex',
+      currency: 'BTC',
+      ownerId: res.locals.user._id
+    })
+    .save()
+    .then(()=> console.log('WALLET BITFINEX CREADA'))
 
-  createWalletPost: (req, res) => {
-    const GDAXClicked = req.body.exchangeGDAX
-    if(GDAXClicked == 'on')
-      new Wallet({
-        exchangeSite: 'GDAX'
-      })
-      .save()
-      .then(()=> console.log('WALLET CREADA'))
 
-    res.redirect('/wallets/selectexchange')
-  }
+  res.redirect('/wallets/selectexchange')
+},
+
+createWalletGet: (req, res) => {
+  Wallet.find({}, (err, wallets) => {
+    if (err) { return next(err); }
+
+
+  res.render('wallets/show', {
+      title:'My Wallets',
+      wallets: wallets
+    })
+  })
+},
+
+walletDeletePost: (req, res) => {
+const walletId = req.params.id
+console.log(walletId)
+Wallet.findByIdAndRemove(walletId)
+.then( response => {
+  res.status(200).json({respuesta: walletId})
+}).catch( error => console.log(`8========D ${error}`))
+
+
+}
+
+
 }
