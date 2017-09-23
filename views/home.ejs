@@ -13,12 +13,14 @@
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">BIT-BOT</a>
+        <a class="navbar-brand" href="/" img src ="./public/stylesheets/img/bitbot.png">LOGO</a>
       </div>
       <form action="/logout" method="POST">
         <ul class="nav navbar-nav">
           <li><a href="/card/show">Add Money to Account</a></li>
+          <% if(wallet == undefined) { %>
           <li><a href="/wallets/create">Create Wallet</a></li>
+          <% } %>
           <li><a href="/users/edit">Edit Profile</a></li>
           <li><a href="/users/userinfo">Show User</a></li>
         </ul>
