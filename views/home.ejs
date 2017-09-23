@@ -5,11 +5,11 @@
 <% if(user) { %>
   <h2>Hola <%= user.firstname %></h2>
   <form action="/logout" method="POST">
-
     <a href="/card/show">Add Money to Account</a>
     <a href="/wallets/create">Create Wallet</a>
     <a href="/users/edit">Edit Profile</a>
     <a href="/users/userinfo">Show User</a>
+    <a class="btn btn-primary" href="/card/show" role="button">Link</a>
     <button>Logout</button>
   </form>
 
