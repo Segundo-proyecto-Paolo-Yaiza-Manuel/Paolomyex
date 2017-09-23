@@ -12,7 +12,7 @@ const upload = multer({ dest: './public/uploads/' });
 authRoutes.get("/signup", ensureLogin.ensureLoggedOut('/'), AuthController.signup)
 authRoutes.post('/signup', upload.fields([{
   name:'dniFront'}, {name:'dniBack'}]), passport.authenticate('local-signup', {
-  successRedirect : '/login',
+  successRedirect : '/wallets/create',
   failureRedirect : '/signup'
 }))
 

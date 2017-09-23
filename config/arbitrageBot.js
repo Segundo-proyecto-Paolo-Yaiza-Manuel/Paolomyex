@@ -52,12 +52,6 @@ module.exports = function(){
 }
 
 function changeTheWalletOfBTC(originWallet, destinyWallet, mostExpensiveExchange, cheapestExchange, userId){
-  console.log(`======WALLET ORIGEN ${originWallet}`);
-  console.log(`======WALLET DESTINO ${destinyWallet}`);
-  console.log(originWallet.quantity*mostExpensiveExchange.BTCValue);
-  console.log(originWallet.exchangeSite);
-  console.log(destinyWallet.exchangeSite);
-  console.log(userId);
   const moneyIfStopsArbitrage = originWallet.quantity*mostExpensiveExchange.BTCValue
   new Trade({
     moneyIfStopsArbitrage: moneyIfStopsArbitrage,
