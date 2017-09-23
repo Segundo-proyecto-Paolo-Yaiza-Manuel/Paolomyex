@@ -87,5 +87,24 @@ module.exports = {
       req.user = theUser
       res.redirect('/')
     })
+  },
+
+  stopArbitrageGet:(req, res) => {
+    res.render('wallets/show')
+  },
+
+  stopArbitragePost:(req, res) => {
+    console.log('PARA EL ARBITRAJE');
+    console.log(req.body);
+    const userId = req.user._id
+    const userInfo = {
+      inArbitrage: false
+    }
+    User.findByIdAndUpdate(userId, userInfo, { new: true }, (err, theUser) => {
+      if (err) return next(err)
+
+      req.user = theUser
+      res.redirect('/')
+    })
   }
 }
