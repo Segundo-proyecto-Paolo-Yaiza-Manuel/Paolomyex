@@ -12,6 +12,7 @@ const tradeSchema = new Schema({
       'Kraken'
     ]
   },
+  
   exchangeDestination: {
     type: String,
     enum: [
