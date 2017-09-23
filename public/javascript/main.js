@@ -1,6 +1,6 @@
 const gdaxAPI = new GDAXHandler("https://api-public.sandbox.gdax.com")
 const bitfinexAPI = new BitfinexHandler("https://api.bitfinex.com")
-
+const bitstampAPI = new BitstampHandler("https://www.bitstamp.net/api")
 
 
 $(document).ready( function() {
@@ -24,6 +24,10 @@ $(document).ready( function() {
         valuesArray.push({exchange: 'GDAX', BTCValue: ticker.price})
         $('#market-values').append(displayMarketValue(`In GDAX the BTC value is ${ticker.price}`))
       })
+    // const t1 = bitstampAPI.getTicker()
+    // .then(ticker => {
+    //   valuesArray.push({exchange: 'Bitstamp', BTCValue: })
+    // })
       .catch(err => console.log(err))
 
     const t2 = bitfinexAPI.getTicker(market)
