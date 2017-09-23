@@ -9,7 +9,7 @@ const AuthController = require("../controllers/AuthController")
 const User = require("../models/User")
 const upload = multer({ dest: './public/uploads/' });
 
-authRoutes.get("/signup", AuthController.signup)
+authRoutes.get("/signup", ensureLogin.ensureLoggedOut('/'), AuthController.signup)
 authRoutes.post('/signup', upload.fields([{
   name:'dniFront'}, {name:'dniBack'}]), passport.authenticate('local-signup', {
   successRedirect : '/login',
