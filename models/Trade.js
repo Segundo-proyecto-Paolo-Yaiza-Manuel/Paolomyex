@@ -3,25 +3,10 @@ const Schema   = mongoose.Schema
 
 const tradeSchema = new Schema({
   tradeDate: Date,
-  quantity: Number,
-  exchangeOrigin: {
-    type: String,
-    enum: [
-      'Poloniex',
-      'Bittrex',
-      'Kraken'
-    ]
-  },
-  
-  exchangeDestination: {
-    type: String,
-    enum: [
-      'Poloniex',
-      'Bittrex',
-      'Kraken'
-    ]
-  },
-  walletId: {type: Schema.Types.ObjectId, ref:'Wallet'}
+  moneyIfStopsArbitrage: Number,
+  exchangeOrigin: String,
+  exchangeDestination: String,
+  userId: {type: Schema.Types.ObjectId, ref:'User'}
 }, {
   timestamps: {
     createdAt: 'created_at',
