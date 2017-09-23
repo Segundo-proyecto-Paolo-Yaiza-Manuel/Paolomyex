@@ -57,9 +57,7 @@ module.exports = {
   },
 
   showUserGet: (req, res) => {
-    res.render('users/showuser', {
-
-    })
+    res.render('users/showuser')
   },
 
   userDeleteGet: (req, res) => {
@@ -101,9 +99,7 @@ module.exports = {
     })
   },
 
-  stopArbitrageGet:(req, res) => {
-    res.render('wallets/show')
-  },
+
 
   stopArbitragePost:(req, res) => {
     console.log('PARA EL ARBITRAJE');
