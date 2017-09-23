@@ -1,4 +1,5 @@
 const User = require("../models/User")
+const Wallet = require('../models/Wallet')
 const bcrypt = require("bcrypt")
 
 module.exports = {
@@ -22,7 +23,11 @@ module.exports = {
 
 
   goHomeGet: (req, res) => {
-    res.render('home')
+    const walletOwnerId = req.user._id
+    Wallet.find({ownerId: walletOwnerId})
+    .then( wallet  => {
+      res.render('home', {wallet})
+    }).catch( err => next(err))
   },
 
 
