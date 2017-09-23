@@ -7,16 +7,16 @@ selectExGet: (req, res) => {
 },
 
 createWalletPost: (req, res) => {
-  const GDAXClicked = req.body.exchangeGDAX
+  const GDAXClicked = req.body.exchangeBitstamp
   if(GDAXClicked == 'on')
     new Wallet({
-      name: 'GDAX',
-      exchangeSite: 'GDAX',
+      name: 'Bitstamp',
+      exchangeSite: 'Bitstamp',
       currency: 'BTC',
       ownerId: res.locals.user._id
     })
     .save()
-    .then(()=> console.log('WALLET GDAX CREADA'))
+    .then(()=> console.log('WALLET BITSTAMP CREADA'))
   const BitfinexClicked = req.body.exchangeBitfinex
   if(BitfinexClicked == 'on')
   new Wallet({

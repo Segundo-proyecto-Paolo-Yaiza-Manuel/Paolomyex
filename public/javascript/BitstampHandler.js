@@ -5,7 +5,7 @@ class BitstampHandler {
     this.BASE_URL = baseUrl;
   }
 
-  getTicker(market) {
+  getTicker() {
     return $.get(`${this.BASE_URL}/ticker`)
   }
 }

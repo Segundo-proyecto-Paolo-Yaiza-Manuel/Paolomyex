@@ -3,9 +3,9 @@ const superagent = require('superagent')
 
 module.exports = function(){
   const valuesArray = []
-  const t1 = superagent.get('https://api-public.sandbox.gdax.com/products/BTC-USD/ticker')
+  const t1 = superagent.get('https://www.bitstamp.net/api/ticker')
     .then(ticker => {
-      valuesArray.push({exchange: 'GDAX', BTCValue: ticker.body.price})
+      valuesArray.push({exchange: 'Bitstamp', BTCValue: ticker.body.last})
     })
     .catch(err => console.log(err))
 
