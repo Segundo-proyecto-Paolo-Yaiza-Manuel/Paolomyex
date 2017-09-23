@@ -77,14 +77,26 @@ module.exports = {
   initArbitragePost:(req, res) => {
     console.log('INICIA EL ARBITRAJE');
     console.log(req.body);
+    const exchange = req.body.exchange
+    console.log(`EXCHANGE: ${exchange}`);
+    const BTCPrice = req.body.BTCValue
+    console.log(`BTC Value: ${BTCPrice}`);
     const userId = req.user._id
     const userInfo = {
-      inArbitrage: true
+      inArbitrage: true,
+      money: 0
     }
+
+    User.findById(userId)
+      .then(user =>
+        Wallet.findOneAndUpdate({ownerId: user._id, exchangeSite: 'Bitfinex'},
+          {quantity: user.money/BTCPrice}, { new: true })
+          .then(wallet => console.log(`Init arbitrage with ${wallet.quantity} BTC`)))
     User.findByIdAndUpdate(userId, userInfo, { new: true }, (err, theUser) => {
       if (err) return next(err)
 
       req.user = theUser
+      console.log(theUser);
       res.redirect('/')
     })
   }
