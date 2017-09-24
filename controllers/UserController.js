@@ -1,5 +1,6 @@
 const User = require("../models/User")
 const Wallet = require("../models/Wallet")
+const Trade = require("../models/Trade")
 const bcrypt = require("bcrypt")
 
 module.exports = {
@@ -28,11 +29,12 @@ module.exports = {
   },
 
   goHomeGet: (req, res) => {
-    const walletOwnerId = req.user._id
-    console.log(req.user)
-    Wallet.find({ownerId: walletOwnerId})
-    .then( wallet  => {
-      res.render('home', {wallet,user:req.user})
+    const userId = req.user._id
+    Wallet.find({ownerId: userId})
+    .then( wallets  => {
+      Trade.find({userId: userId})
+      .then(trades => res.render('home', {wallets: wallets,user:req.user, trades: trades})
+      )
     }).catch( err => next(err))
   },
 
@@ -140,4 +142,10 @@ module.exports = {
       res.redirect('/')
     })
   },
+
+  tradesInfoGet:(req, res) => {
+    const userId = req.user._id
+    Trade.find({userId: userId})
+    .then(trades => res.status(200).json(trades))
+  }
 }
