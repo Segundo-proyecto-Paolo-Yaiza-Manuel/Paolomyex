@@ -14,12 +14,12 @@ module.exports = {
       money: req.body.quantity
     }
 
-    User.findByIdAndUpdate(userId, cardInfo, {
-      new: true
-    }).then(result => {
-      req.user = result
-      res.redirect('/users/home')
-    }).catch(err => console.log(err))
+    User.findByIdAndUpdate(userId, cardInfo, {new: true})
+      .then(result => {
+        req.user = result
+        res.redirect('/users/home')
+      })
+      .catch(err => console.log(err))
   },
 
   addMoneyGet: (req, res) => {
@@ -119,38 +119,46 @@ console.log(userInfo);
 
 
 
-  stopArbitragePost: (req, res) => {
-    console.log('PARA EL ARBITRAJE');
-    console.log(req.body);
-    const exchange = req.body.exchange
-    console.log(`EXCHANGE: ${exchange}`);
-    const BTCPrice = req.body.BTCValue
-    console.log(`BTC Value: ${BTCPrice}`);
+  stopArbitrageGet: (req, res) => {
     const userId = req.user._id
     const userInfo = {
-      inArbitrage: false,
-      money: 0
+      inArbitrage: false
     }
 
-    User.findById(userId)
-      .then(user =>
-        Wallet.findOneAndUpdate({
-          ownerId: user._id,
-          exchangeSite: 'Bitfinex'
-        }, {
-          quantity: user.money / BTCPrice
-        }, {
-          new: true
-        })
-        .then(wallet => console.log(`Init arbitrage with ${wallet.quantity} BTC`)))
-    User.findByIdAndUpdate(userId, userInfo, {
-      new: true
-    }, (err, theUser) => {
-      if (err) return next(err)
+    Wallet.find({ownerId: userId, quantity: {$gt: 0}})
+    .then(wallet => {
+      console.log(wallet);
+      if(wallet.exchangeSite == 'Bitstamp'){
+        superagent.get('https://www.bitstamp.net/api/ticker')
+          .then(ticker => {
+            userInfo.money = wallet.quantity*ticker.body.last
 
-      req.user = theUser
-      console.log(theUser);
-      res.redirect('/')
+            User.findByIdAndUpdate(userId, userInfo, {new: true})
+              .then(newUser => {
+                req.user = newUser
+                res.redirect('/users/home')
+                Wallet.findByIdAndUpdate(wallet._id, {quantity:0})
+              })
+              .catch(err => console.log(err))
+
+          })
+          .catch(err => console.log(err))
+      }
+      if(wallet.exchangeSite == 'Bitfinex'){
+        superagent.get('https://api.bitfinex.com/v2/ticker/tBTCUSD')
+          .then(ticker => {
+            userInfo.money = wallet.quantity*ticker.body[6]
+
+            User.findByIdAndUpdate(userId, userInfo, {new: true})
+              .then(newUser => {
+                req.user = newUser
+                res.redirect('/users/home')
+                Wallet.findByIdAndUpdate(wallet._id, {quantity:0})
+              })
+              .catch(err => console.log(err))
+          })
+          .catch(err => console.log(err))
+      }
     })
   },
 

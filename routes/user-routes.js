@@ -11,7 +11,7 @@ router.get('/userinfo', ensureLoggedIn('/'), userController.showUserGet)
 router.get('/delete', ensureLoggedIn('/'), userController.userDeleteGet)
 router.get('/init-arbitrage', ensureLoggedIn('/'), userController.initArbitrageGet)
 router.post('/init-arbitrage', ensureLoggedIn('/'), userController.initArbitragePost)
-router.post('/stop-arbitrage', ensureLoggedIn('/'), userController.stopArbitragePost)
+router.get('/stop-arbitrage', ensureLoggedIn('/'), userController.stopArbitrageGet)
 router.get('/trades-info', ensureLoggedIn('/'), userController.tradesInfoGet)
 router.get('/operation-history', ensureLoggedIn('/'), userController.operationsHistoryGet)
 

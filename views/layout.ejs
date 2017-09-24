@@ -12,8 +12,6 @@
 </head>
 
 <body>
-
-
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -21,36 +19,32 @@
       </div>
       <form action="/logout" method="POST">
         <ul class="nav navbar-nav">
-
           <% if (user){ %>
-
-
              <a class="btn btn navbar-btn" href="/users/edit">Edit Profile</a>
              <a class="btn btn navbar-btn" href="/users/userinfo">Show User</a>
+             <a class="btn btn navbar-btn" href="/users/operation-history">Operations History</a>
+             <% if (user.inArbitrage){ %>
+               <a class="btn btn navbar-btn" href="/users/stop-arbitrage">Stop Arbitrage</a>
+             <% }else{ %>
+               <a class="btn btn navbar-btn" href="/users/init-arbitrage">Init Arbitrage</a>
+             <%}%>
              <button class="btn btn-danger navbar-btn" href="/home">LOGOUT</button>
           <% }else{ %>
-
-
-            <li><a class="login" href="/signup">signup</a></li>
-            <li><a class="login" href="/login"> login</a></li>
-
-            <%}%>
-
-
+            <li><a class="login" href="/signup">Sign Up</a></li>
+            <li><a class="login" href="/login">Login</a></li>
+          <%}%>
         </ul>
-
       </form>
     </div>
   </nav>
 
-
   <%- body -%>
 
-<footer class="navbar-default navbar-fixed-bottom" id = "footerfix">
+<!-- <footer class="navbar-default" id = "footerfix">
   <div class="container-fluid">
     <span>Winning!</span>
   </div>
-</footer>
+</footer> -->
 
     <script src="/javascript/GDAXHandler.js"></script>
     <script src="/javascript/BitfinexHandler.js"></script>
