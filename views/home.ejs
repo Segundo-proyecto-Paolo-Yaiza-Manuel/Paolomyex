@@ -1,32 +1,4 @@
-<!--user home-->
-
-
-<!--
-  <!  <form action="/logout" method="POST">
-    <a class="btn btn-primary" href="/card/show">Add Money to Account</a>
-    <a class="btn btn-primary" href="/wallets/create">Create Wallet</a>
-    <a class="btn btn-primary" href="/users/edit">Edit Profile</a>
-    <a class="btn btn-primary" href="/users/usersinfo">Show User</a>
-    <button type="button" class="btn btn-outline-logout">LOGOUT</button>
-  </form> -->
-  <!-- <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/home" img src="./public/stylesheets/img/bitbot.png">LOGO</a>
-      </div>
-      <form action="/logout" method="POST">
-        <ul class="nav navbar-nav">
-          <li><a href="/card/show">Add Money to Account</a></li>
-          <% if(wallets == undefined) { %>
-            <li><a href="/wallets/create">Create Wallet</a></li>
-            <% } %>
-              <li><a href="/users/edit">Edit Profile</a></li>
-              <li><a href="/users/userinfo">Show User</a></li>
-        </ul>
-        <button class="btn btn-danger navbar-btn" href="/home">LOGOUT</button>
-      </form>
-    </div>
-  </nav> -->
+<!-- user home -->
 
   <% if(!user.cardNumber){ %>
   <h1>To create a wallet, you need money first</h1>
@@ -36,6 +8,23 @@
     <% } %>
   <% if(user) { %>
   <a href="/users/operation-history">Operations History</a>
+  <div id='market-values-btns'class="field">
+    <div class="field">
+      <label for="select-currency">Select currency: </label>
+      <select id='select-currency'>
+        <option disabled selected value> -- select an option -- </option>
+        <option value="BTC-USD">BTC</option>
+      </select>
+    </div>
+
+    <div id='market-values'class="field">
+    </div>
+
+    <div id='market-values-btns'class="field">
+      <button id="init-arbitrage" hidden>START</button>
+      <button id="stop-arbitrage" hidden>STOP</button>
+    </div>
+  </div>
   <h2>Hola <%= user.firstname %></h2>
   <canvas id="user-money-evolution"></canvas>
   <% }else{ %>
