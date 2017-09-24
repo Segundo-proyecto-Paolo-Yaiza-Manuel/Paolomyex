@@ -1,5 +1,5 @@
 const User = require("../models/User")
-const Wallet = require('../models/Wallet')
+const Wallet = require("../models/Wallet")
 const bcrypt = require("bcrypt")
 
 module.exports = {
@@ -83,22 +83,24 @@ module.exports = {
 
   initArbitragePost:(req, res) => {
     console.log('INICIA EL ARBITRAJE');
-    console.log(req.body);
     const exchange = req.body.exchange
-    console.log(`EXCHANGE: ${exchange}`);
     const BTCPrice = req.body.BTCValue
-    console.log(`BTC Value: ${BTCPrice}`);
     const userId = req.user._id
     const userInfo = {
       inArbitrage: true,
       money: 0
     }
 
-    User.findById(userId)
-      .then(user =>
-        Wallet.findOneAndUpdate({ownerId: user._id, exchangeSite: 'Bitfinex'},
-          {quantity: user.money/BTCPrice}, { new: true })
-          .then(wallet => console.log(`Init arbitrage with ${wallet.quantity} BTC`)))
+    const userMoney = req.user.money
+    const walletBTCQuantity = userMoney/BTCPrice
+    const walletInfo = {
+      quantity: walletBTCQuantity
+    }
+
+    Wallet.findOneAndUpdate({'ownerId': req.user._id, 'exchangeSite': exchange},
+        walletInfo, {new: true})
+        .then(wallet => console.log(`Init arbitrage with ${wallet.quantity} BTC`))
+        .catch(error => { console.log(error)})
     User.findByIdAndUpdate(userId, userInfo, { new: true }, (err, theUser) => {
       if (err) return next(err)
 

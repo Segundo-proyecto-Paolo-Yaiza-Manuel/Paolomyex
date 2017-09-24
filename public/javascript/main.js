@@ -7,14 +7,11 @@ $(document).ready( function() {
   $('.delete-wallet').on('click', function(e){
     const id = $(this).attr('data-id-wallet');
     $.ajax({
-    url: `/wallets/delete/${id}`,
-    type: 'POST',
-  }).then(res => {
-    $(e.target).parent().remove()
+      url: `/wallets/delete/${id}`,
+      type: 'POST',
+    })
+    .then(res => {$(e.target).parent().remove()})
   })
-})
-
-
 
   $('#select-currency').on('change', (e) => {
     const market = $('#select-currency').val()
@@ -25,11 +22,10 @@ $(document).ready( function() {
     //     $('#market-values').append(displayMarketValue(`In GDAX the BTC value is ${ticker.price}`))
     //   })
     const t1 = bitstampAPI.getTicker()
-    .then(ticker => {
-      console.log('sacando Bitstamp')
-      valuesArray.push({exchange: 'Bitstamp', BTCValue: ticker.last})
-      $('#market-values').append(displayMarketValue(`In Bitstamp the BTC value is ${ticker.last}`))
-    })
+      .then(ticker => {
+        valuesArray.push({exchange: 'Bitstamp', BTCValue: ticker.last})
+        $('#market-values').append(displayMarketValue(`In Bitstamp the BTC value is ${ticker.last}`))
+      })
       .catch(err => console.log(err))
 
     const t2 = bitfinexAPI.getTicker(market)

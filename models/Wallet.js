@@ -5,7 +5,7 @@ const walletSchema = new Schema({
   name: String,
   exchangeSite: String,
   currency: String,
-  quantity: Number,
+  quantity: {type:Number, default:0},
   ownerId: {type: Schema.Types.ObjectId, ref:'User'}
 }, {
   timestamps: {
