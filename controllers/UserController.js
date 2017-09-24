@@ -28,19 +28,9 @@ module.exports = {
 
   goHomeGet: (req, res) => {
     const userId = req.user._id
-    Wallet.find({
-        ownerId: userId
-      })
-      .then(wallets => {
-        Trade.find({
-            userId: userId
-          })
-          .then(trades => res.render('home', {
-            wallets: wallets,
-            user: req.user,
-            trades: trades
-          }))
-      }).catch(err => next(err))
+    Wallet.find({ownerId: userId})
+    .then( wallets  => {res.render('home', {wallets: wallets})})
+    .catch( err => next(err))
   },
 
 
@@ -101,7 +91,8 @@ module.exports = {
     const userId = req.user._id
     const userInfo = {
       inArbitrage: true,
-      money: 0
+      money: 0,
+      lastBTCValue: req.body.BTCValue
     }
 
     const userMoney = req.user.money
@@ -171,9 +162,20 @@ module.exports = {
 
   tradesInfoGet: (req, res) => {
     const userId = req.user._id
+<<<<<<< HEAD
     Trade.find({
         userId: userId
       })
       .then(trades => res.status(200).json(trades))
+=======
+    Trade.find({userId: userId})
+    .then(trades => res.status(200).json(trades))
+  },
+
+  operationsHistoryGet: (req, res) => {
+    const userId = req.user._id
+    Trade.find({userId: userId})
+    .then(trades => res.render('users/operationsHistory', {trades: trades}))
+>>>>>>> 3eff5f617b26f455fe50e6b31d828bf7df5b4c8e
   }
 }

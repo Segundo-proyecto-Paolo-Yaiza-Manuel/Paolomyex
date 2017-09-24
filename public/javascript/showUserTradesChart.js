@@ -33,4 +33,4 @@ function printTradesInfoChart(trades){
 
 }
 
-setInterval(getTradesInfo(), 1000*60)
+setInterval(getTradesInfo, 1000*60)

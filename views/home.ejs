@@ -35,9 +35,9 @@
   <% }else{ %>
     <% } %>
   <% if(user) { %>
-
+  <a href="/users/operation-history">Operations History</a>
   <h2>Hola <%= user.firstname %></h2>
-  <canvas id="user-money-evolution" data-trade-info="<%= trades %>"></canvas>
+  <canvas id="user-money-evolution"></canvas>
   <% }else{ %>
     <div class="error-message">
       <%= message %>

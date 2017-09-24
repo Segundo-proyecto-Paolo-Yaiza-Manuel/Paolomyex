@@ -1,0 +1,23 @@
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Origin Exchange</th>
+        <th>Destiny Exchange</th>
+        <th>Money</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% trades.forEach( trade => {%>
+      <tr>
+        <td><%= trade.created_at %></td>
+        <td><%= trade.exchangeOrigin %></td>
+        <td><%= trade.exchangeDestination %></td>
+        <td>$<%= trade.moneyIfStopsArbitrage %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  </div>
+</div>
