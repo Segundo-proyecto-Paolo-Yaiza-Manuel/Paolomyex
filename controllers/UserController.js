@@ -136,4 +136,10 @@ module.exports = {
       res.redirect('/')
     })
   },
+
+  tradesInfoGet:(req, res) => {
+    const userId = req.user._id
+    Trade.find({userId: userId})
+    .then(trades => res.status(200).json(trades))
+  }
 }

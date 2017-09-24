@@ -1,20 +1,37 @@
-const ctx = $('#user-money-evolution').getContext('2d')
-const trades = $('#user-money-evolution').attr('data-trade-info')
-console.log(trades);
-const chart = new Chart(ctx, {
-    type: 'line',
+function getTradesInfo(){
+      $.ajax({
+        url: `/users/trades-info`,
+        dataType:'json'
+      })
+      .then( trades => {
+        console.log(trades);
+        printTradesInfoChart(trades)
 
-    // The data for our dataset
-    data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [{
-            label: "My First dataset",
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
-        }]
-    },
+      })
+      .catch( e => console.log(e));
+}
 
-    // Configuration options go here
-    options: {}
-})
+function printTradesInfoChart(trades){
+  const tradesDates = trades.map(trade => trade.created_at)
+  const tradesMoney = trades.map(trade => trade.moneyIfStopsArbitrage)
+  const ctx = $('#user-money-evolution')
+  const chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: tradesDates,
+          datasets: [{
+              label: "How your money grows",
+              backgroundColor: '#06a808',
+              borderColor: '#06a808',
+              data: tradesMoney,
+          }]
+      },
+
+      // Configuration options go here
+      options: {}
+  })
+
+}
+
+
+getTradesInfo()
