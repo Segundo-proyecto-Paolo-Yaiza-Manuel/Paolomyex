@@ -2,6 +2,7 @@ const User = require("../models/User")
 const Wallet = require("../models/Wallet")
 const Trade = require("../models/Trade")
 const bcrypt = require("bcrypt")
+const superagent = require('superagent')
 
 module.exports = {
   addMoneyToAccount: (req, res) => {
@@ -49,8 +50,6 @@ module.exports = {
       phone: req.body.phoneNumber,
       email: req.body.email
     }
-
-console.log(userInfo);
 
     User.findByIdAndUpdate(userId, userInfo, {new: true})
       .then(newUser => {
@@ -113,10 +112,9 @@ console.log(userInfo);
 
       req.user = theUser
       console.log(theUser);
-      res.redirect('/')
+      res.redirect('/users/home')
     })
   },
-
 
 
   stopArbitrageGet: (req, res) => {
