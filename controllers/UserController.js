@@ -162,12 +162,6 @@ module.exports = {
 
   tradesInfoGet: (req, res) => {
     const userId = req.user._id
-<<<<<<< HEAD
-    Trade.find({
-        userId: userId
-      })
-      .then(trades => res.status(200).json(trades))
-=======
     Trade.find({userId: userId})
     .then(trades => res.status(200).json(trades))
   },
@@ -176,6 +170,5 @@ module.exports = {
     const userId = req.user._id
     Trade.find({userId: userId})
     .then(trades => res.render('users/operationsHistory', {trades: trades}))
->>>>>>> 3eff5f617b26f455fe50e6b31d828bf7df5b4c8e
   }
 }
