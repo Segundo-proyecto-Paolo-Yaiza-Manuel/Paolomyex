@@ -48,22 +48,16 @@ module.exports = {
       dniNumber: req.body.username,
       phone: req.body.phoneNumber,
       email: req.body.email
-
-      // cardNumber: req.body.cardNumber,
-      // cardCVV: req.body.cvv,
-      // cardExpiredDate: req.body.expiredDate,
-      // money: req.body.quantity
     }
 
-    User.findByIdAndUpdate(userId, userInfo, {
-      new: true
-    }, (err, theUser) => {
-      if (err) return next(err)
+console.log(userInfo);
 
-      req.user = theUser
-
-      res.redirect('/')
-    })
+    User.findByIdAndUpdate(userId, userInfo, {new: true})
+      .then(newUser => {
+        req.user = newUser
+        res.redirect('/')
+      })
+      .catch(err => next(err))
   },
 
   showUserGet: (req, res) => {
