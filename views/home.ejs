@@ -1,37 +1,16 @@
-<!-- user home -->
-
-  <% if(!user.cardNumber){ %>
+<% if(!user.cardNumber){ %>
   <h1>To create a wallet, you need money first</h1>
-   <%- include("./users/addMoneyToAccount") %>
+  <%- include("./users/addMoneyToAccount") %>
+<% } %>
 
-  <% }else{ %>
-    <% } %>
-  <% if(user) { %>
-  <a href="/users/operation-history">Operations History</a>
-  <div id='market-values-btns'class="field">
-    <div class="field">
-      <label for="select-currency">Select currency: </label>
-      <select id='select-currency'>
-        <option disabled selected value> -- select an option -- </option>
-        <option value="BTC-USD">BTC</option>
-      </select>
-    </div>
-
-    <div id='market-values'class="field">
-    </div>
-
-    <div id='market-values-btns'class="field">
-      <button id="init-arbitrage" hidden>START</button>
-      <button id="stop-arbitrage" hidden>STOP</button>
-    </div>
-  </div>
+<% if(user) { %>
   <h2>Hola <%= user.firstname %></h2>
   <canvas id="user-money-evolution"></canvas>
-  <% }else{ %>
-    <div class="error-message">
-      <%= message %>
-    </div>
-    <% } %>
+<% }else{ %>
+  <div class="error-message">
+    <%= message %>
+  </div>
+<% } %>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="/javascript/showUserTradesChart.js"></script>
