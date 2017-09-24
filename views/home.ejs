@@ -7,16 +7,16 @@
   <form action="/logout" method="POST">
 
     <a href="/card/show">Add Money to Account</a>
-<% if(wallet == undefined) { %>
-    <a href="/wallets/create">Create Wallet</a>
-<% } %>
+    <% if(wallet == undefined) { %>
+      <a href="/wallets/create">Create Wallet</a>
+    <% } %>
     <a href="/users/edit">Edit Profile</a>
     <a href="/users/userinfo">Show User</a>
     <button>Logout</button>
   </form>
 
-  <% }else{ %>
-    <div class="error-message">
-      <%= message %>
-    </div>
-    <% } %>
+<% }else{ %>
+  <div class="error-message">
+    <%= message %>
+  </div>
+<% } %>
