@@ -20,3 +20,19 @@ a {
   height: 700px;
   background-color: grey;
 }
+
+#icon {
+ background-image: url("/img/bitbot1.png");
+ position : absolute;
+ float: left;
+ height: 1px;
+ width: 1px;
+
+}
+
+
+#footerfix{
+  background-color: rgba(255, 0, 0, 0.5);
+  height: 100px;
+  margin:0 50px;
+}
