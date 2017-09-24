@@ -1,123 +1,49 @@
-<!-- <h2><%= title %></h2>
-<form action="/users/edit" method="POST">
-  <div class="field">
-    <label for="firstname">First Name: </label>
-    <input id="firstname" type="text" name="firstname" placeholder="First Name" value="<%= user.firstname%>">
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 centered-form">
 
-  <div class="field">
-    <label for="lastname">Last Name: </label>
-    <input id="lastname" type="text" name="lastname" placeholder="Last Name" value="<%= user.lastname%>">
-  </div>
+      <form action="/users/edit" method="post" id="form-container" enctype="multipart/form-data">
+        <div class="field form-group">
+          <label for="firstname">First Name: </label>
+          <input class="form-control" id="firstname" type="text" name="firstname" placeholder="First Name" value="<%= user.firstname%>">
+        </div>
+        <div class="field form-group">
+          <label for="lastname">Last Name: </label>
+          <input class="form-control" id="lastname" type="text" name="lastname" placeholder="Last Name" value="<%= user.lastname%>">
+        </div>
+        <div class="field form-group">
+          <label for="address">Address: </label>
+          <input class="form-control" id="address" type="text" name="address" placeholder="Address" value="<%= user.address%>">
+        </div>
+        <div class="field form-group">
+          <label for="dniNumber">DNI: </label>
+          <input class="form-control" id="dniNumber" type="text" name="username" placeholder="DNI Number" value="<%= user.dniNumber%>">
+        </div>
 
-  <div class="field">
-    <label for="address">Address: </label>
-    <input id="address" type="text" name="address" placeholder="Address" value="<%= user.address%>">
-  </div>
-  <div class="field">
-    <label for="dniNumber">DNI: </label>
-    <input id="dniNumber" type="text" name="username" placeholder="DNI Number" value="<%= user.dniNumber%>">
-  </div>
-  <div class="field">
-    <label for="dniFront">DNI Front Photo: </label>
-    <input id="dniFront" type="file" name="dniFront" value="<%= user.imgDniFront%>">
-  </div>
-  <div class="field">
-    <label for="dniBack">DNI Back Photo: </label>
-    <input id="dniBack" type="file" name="dniBack" value="<%= user.imgDniBack%>">
-  </div>
-  <div class="field">
-    <label for="phoneNumber">Phone Number: </label>
-    <input id="phoneNumber" type="text" name="phoneNumber" placeholder="Phone Number" value="<%= user.phone%>">
-  </div>
-  <div class="field">
-    <label for="mail">Email: </label>
-    <input id="mail" type="mail" name="email" placeholder="Mail" value="<%= user.email%>">
-  </div>
-  <div class="field">
-    <label for="password">Password: </label>
-    <input id="password" type="password" name="password" placeholder="Your password" value="<%= user.password%>">
-  </div>
-  <button type="submit">Update User</button>
-</form> -->
+        <div class="field form-group">
+          <label for="phoneNumber">Phone Number: </label>
+          <input class="form-control" id="phoneNumber" type="text" name="phoneNumber" placeholder="Phone Number" value="<%= user.phone%>">
+        </div>
+        <div class="field form-group">
+          <label for="mail">Email: </label>
+          <input class="form-control" id="mail" type="mail" name="email" placeholder="Mail" value="<%= user.email%>">
+        </div>
 
-<form action="/users/edit" method="POST">
-<div class="form-group row">
-  <label for="firstname" class="col-2 col-form-label"></label>
-  <div class="col-10">
-    <input class="form-control" type="text" id="firstname" name ="firstname" placeholder="First Name" value="<%= user.firstname%>">
+
+        <% if (typeof message !== "undefined") { %>
+          <div class="error-message">
+            <%= message %>
+          </div>
+          <% } %>
+
+            <div id="create">
+              <button>edit account</button>
+            </div>
+
+
+
+      </form>
+    </div>
+
   </div>
 </div>
-<div class="form-group row">
-  <label for="example-search-input" class="col-2 col-form-label">Search</label>
-  <div class="col-10">
-    <input class="form-control" type="text" value="<%= user.lastname%>" id="example-search-input" name ="">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-email-input" class="col-2 col-form-label">Email</label>
-  <div class="col-10">
-    <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-url-input" class="col-2 col-form-label">URL</label>
-  <div class="col-10">
-    <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
-  <div class="col-10">
-    <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-password-input" class="col-2 col-form-label">Password</label>
-  <div class="col-10">
-    <input class="form-control" type="password" value="hunter2" id="example-password-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-number-input" class="col-2 col-form-label">Number</label>
-  <div class="col-10">
-    <input class="form-control" type="number" value="42" id="example-number-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-datetime-local-input" class="col-2 col-form-label">Date and time</label>
-  <div class="col-10">
-    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-date-input" class="col-2 col-form-label">Date</label>
-  <div class="col-10">
-    <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-month-input" class="col-2 col-form-label">Month</label>
-  <div class="col-10">
-    <input class="form-control" type="month" value="2011-08" id="example-month-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-week-input" class="col-2 col-form-label">Week</label>
-  <div class="col-10">
-    <input class="form-control" type="week" value="2011-W33" id="example-week-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-time-input" class="col-2 col-form-label">Time</label>
-  <div class="col-10">
-    <input class="form-control" type="time" value="13:45:00" id="example-time-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-color-input" class="col-2 col-form-label">Color</label>
-  <div class="col-10">
-    <input class="form-control" type="color" value="#563d7c" id="example-color-input">
-  </div>
-</div>
-</form>
