@@ -2,31 +2,33 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><%= title %></title>
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   </head>
   <body>
     <nav>
-      <a class="logo" href="/">BIT BOT</a>
+      <!-- <a class="logo" href="/">BIT BOT</a> -->
 
       <% if(!user){ %>
         <li><a class="login" href="/signup">signup</a></li>
         <li><a class="login" href="/login"> login</a></li>
 
       <% }else{ %>
-        <li><a class="login" href="/logout">logout</a></li>
+        <!-- <li><a class="login" href="/logout">logout</a></li>
         <li><a href="/users/init-arbitrage">Init arbitrage</a></li>
-        <li><a class="" href="/card/new">Deposit money</a></li>
+        <li><a href="/users/init-arbitrage">Stop arbitrage</a></li>
+        <li><a class="" href="/card/new">Deposit money</a></li> -->
       <% } %>
     </nav>
 
     <%- body -%>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
     <script src="/javascript/GDAXHandler.js"></script>
     <script src="/javascript/BitfinexHandler.js"></script>
     <script src="/javascript/BitstampHandler.js"></script>
     <script src="/javascript/main.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
   </body>
 </html>

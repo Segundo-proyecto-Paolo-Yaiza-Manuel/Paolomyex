@@ -1,5 +1,6 @@
 const User = require("../models/User")
 const Wallet = require("../models/Wallet")
+const Trade = require("../models/Trade")
 const bcrypt = require("bcrypt")
 
 module.exports = {
@@ -21,12 +22,18 @@ module.exports = {
     })
   },
 
+  logoutUserGet: (req, res) => {
+    res.render('home')
+  },
+
 
   goHomeGet: (req, res) => {
-    const walletOwnerId = req.user._id
-    Wallet.find({ownerId: walletOwnerId})
-    .then( wallet  => {
-      res.render('home', {wallet})
+    const userId = req.user._id
+    Wallet.find({ownerId: userId})
+    .then( wallets  => {
+      Trade.find({userId: userId})
+      .then(trades => res.render('home', {wallets: wallets, trades: trades})
+      )
     }).catch( err => next(err))
   },
 
@@ -62,9 +69,7 @@ module.exports = {
   },
 
   showUserGet: (req, res) => {
-    res.render('users/showuser', {
-
-    })
+    res.render('users/showuser')
   },
 
   userDeleteGet: (req, res) => {
@@ -106,5 +111,34 @@ module.exports = {
       console.log(theUser);
       res.redirect('/')
     })
-  }
+  },
+
+
+
+  stopArbitragePost:(req, res) => {
+    console.log('PARA EL ARBITRAJE');
+    console.log(req.body);
+    const exchange = req.body.exchange
+    console.log(`EXCHANGE: ${exchange}`);
+    const BTCPrice = req.body.BTCValue
+    console.log(`BTC Value: ${BTCPrice}`);
+    const userId = req.user._id
+    const userInfo = {
+      inArbitrage: false,
+      money: 0
+    }
+
+    User.findById(userId)
+      .then(user =>
+        Wallet.findOneAndUpdate({ownerId: user._id, exchangeSite: 'Bitfinex'},
+          {quantity: user.money/BTCPrice}, { new: true })
+          .then(wallet => console.log(`Init arbitrage with ${wallet.quantity} BTC`)))
+    User.findByIdAndUpdate(userId, userInfo, { new: true }, (err, theUser) => {
+      if (err) return next(err)
+
+      req.user = theUser
+      console.log(theUser);
+      res.redirect('/')
+    })
+  },
 }

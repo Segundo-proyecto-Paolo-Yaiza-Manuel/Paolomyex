@@ -54,6 +54,19 @@ $(document).ready( function() {
     .then(()=>console.log('ENVIADO'))
     .catch((e)=>console.log(e))
   })
+
+  $('#stop-arbitrage').on('click', (e) => {
+    e.preventDefault()
+    $.ajax({
+      method:  'POST',
+      url:     `/users/stop-arbitrage`,
+      dataType:'json',
+    })
+    .then(()=>console.log('DETENIDO'))
+    .catch((e)=>console.log(e))
+  })
+
+
 })
 
 function displayMarketValue(infoMarket){

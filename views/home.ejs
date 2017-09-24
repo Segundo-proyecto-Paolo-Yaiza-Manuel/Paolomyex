@@ -1,22 +1,40 @@
 <!--user home-->
 
-<p>HOME!</p>
+
 
 <% if(user) { %>
+  <!-- <form action="/logout" method="POST">
+    <a class="btn btn-primary" href="/card/show">Add Money to Account</a>
+    <a class="btn btn-primary" href="/wallets/create">Create Wallet</a>
+    <a class="btn btn-primary" href="/users/edit">Edit Profile</a>
+    <a class="btn btn-primary" href="/users/usersinfo">Show User</a>
+    <button type="button" class="btn btn-outline-logout">LOGOUT</button>
+  </form> -->
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/home" img src="./public/stylesheets/img/bitbot.png">LOGO</a>
+      </div>
+      <form action="/logout" method="POST">
+        <ul class="nav navbar-nav">
+          <li><a href="/card/show">Add Money to Account</a></li>
+          <% if(wallets == undefined) { %>
+            <li><a href="/wallets/create">Create Wallet</a></li>
+            <% } %>
+              <li><a href="/users/edit">Edit Profile</a></li>
+              <li><a href="/users/userinfo">Show User</a></li>
+        </ul>
+        <button class="btn btn-danger navbar-btn" href="/home">LOGOUT</button>
+      </form>
+    </div>
+  </nav>
   <h2>Hola <%= user.firstname %></h2>
-  <form action="/logout" method="POST">
-
-    <a href="/card/show">Add Money to Account</a>
-    <% if(wallet == undefined) { %>
-      <a href="/wallets/create">Create Wallet</a>
+  <canvas id="user-money-evolution" data-trade-info="<%= trades %>"></canvas>
+  <% }else{ %>
+    <div class="error-message">
+      <%= message %>
+    </div>
     <% } %>
-    <a href="/users/edit">Edit Profile</a>
-    <a href="/users/userinfo">Show User</a>
-    <button>Logout</button>
-  </form>
 
-<% }else{ %>
-  <div class="error-message">
-    <%= message %>
-  </div>
-<% } %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="/javascript/showUserTradesChart.js"></script>
