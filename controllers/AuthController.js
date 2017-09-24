@@ -5,8 +5,8 @@ module.exports = {
   login: (req, res) => {
       res.render('auth/login')
   },
-  logout: (req, res) => {
+  logout: (req, res, next) => {
     req.logout()
-    res.redirect("/login")
+    res.redirect('/../')
   }
 }

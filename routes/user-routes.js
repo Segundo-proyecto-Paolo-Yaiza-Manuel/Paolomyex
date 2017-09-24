@@ -10,7 +10,7 @@ router.get('/delete', userController.userDeleteGet)
 router.get('/init-arbitrage', userController.initArbitrageGet)
 router.post('/init-arbitrage', userController.initArbitragePost)
 router.post('/stop-arbitrage', userController.stopArbitragePost)
-router.get('/home',userController.logoutUserGet)
+
 
 
 module.exports = router
