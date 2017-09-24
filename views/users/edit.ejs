@@ -1,49 +1,40 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 centered-form">
-
       <form action="/users/edit" method="post" id="form-container" enctype="multipart/form-data">
-        <div class="field form-group">
+        <div class="form-group">
           <label for="firstname">First Name: </label>
           <input class="form-control" id="firstname" type="text" name="firstname" placeholder="First Name" value="<%= user.firstname%>">
         </div>
-        <div class="field form-group">
+        <div class="form-group">
           <label for="lastname">Last Name: </label>
           <input class="form-control" id="lastname" type="text" name="lastname" placeholder="Last Name" value="<%= user.lastname%>">
         </div>
-        <div class="field form-group">
+        <div class="form-group">
           <label for="address">Address: </label>
           <input class="form-control" id="address" type="text" name="address" placeholder="Address" value="<%= user.address%>">
         </div>
-        <div class="field form-group">
+        <div class="form-group">
           <label for="dniNumber">DNI: </label>
           <input class="form-control" id="dniNumber" type="text" name="username" placeholder="DNI Number" value="<%= user.dniNumber%>">
         </div>
-
-        <div class="field form-group">
+        <div class="form-group">
           <label for="phoneNumber">Phone Number: </label>
           <input class="form-control" id="phoneNumber" type="text" name="phoneNumber" placeholder="Phone Number" value="<%= user.phone%>">
         </div>
-        <div class="field form-group">
+        <div class="form-group">
           <label for="mail">Email: </label>
           <input class="form-control" id="mail" type="mail" name="email" placeholder="Mail" value="<%= user.email%>">
         </div>
-
 
         <% if (typeof message !== "undefined") { %>
           <div class="error-message">
             <%= message %>
           </div>
-          <% } %>
+        <% } %>
 
-            <div id="create">
-              <button>edit account</button>
-            </div>
-
-
-
+        <button class='btn btn-success'>Edit profile</button>
       </form>
     </div>
-
   </div>
 </div>
