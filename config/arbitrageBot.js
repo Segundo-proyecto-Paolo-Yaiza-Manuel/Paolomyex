@@ -38,10 +38,10 @@ module.exports = function(){
           })
            .then(wallets => {
              if(wallets.length == 2){
-               if(wallets[0].exchangeSite == mostExpensiveExchange.exchange && wallets[0].quantity > 0){
+               if(wallets[0].exchangeSite == mostExpensiveExchange.exchange && wallets[0].quantity > 0 && mostExpensiveExchange.BTCValue > user.lastBTCValue){
                  changeTheWalletOfBTC(wallets[0], wallets[1], mostExpensiveExchange, cheapestExchange, user._id)
                }
-               if(wallets[1].exchangeSite == mostExpensiveExchange.exchange && wallets[1].quantity > 0){
+               if(wallets[1].exchangeSite == mostExpensiveExchange.exchange && wallets[1].quantity > 0 && mostExpensiveExchange.BTCValue > user.lastBTCValue){
                  changeTheWalletOfBTC(wallets[1], wallets[0], mostExpensiveExchange, cheapestExchange, user._id)
                }
              }
@@ -72,6 +72,14 @@ function changeTheWalletOfBTC(originWallet, destinyWallet, mostExpensiveExchange
 
      Wallet.findByIdAndUpdate(destinyWallet._id, destinyWalletAfterTrade, { new: true })
      .then(wallet => console.log(`********WALLET DESTINO DESP DE OPERACION********`, `${wallet}`))
+
+     const userInfo = {
+       lastBTCValue: mostExpensiveExchange.BTCValue
+     }
+
+     User.findByIdAndUpdate(userId, userInfo, { new: true })
+       .then(user => console.log(`********USUARIO MODIF DESP DE OPERACION********`, `${user}`))
+
    })
    .catch(err => console.log(err))
 }

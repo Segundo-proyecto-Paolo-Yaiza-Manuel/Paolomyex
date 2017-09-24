@@ -15,7 +15,8 @@ const userSchema = new Schema({
   cardCVV: Number,
   cardExpiredDate: Date,
   money: Number,
-  inArbitrage: {type:Boolean, default:false}
+  inArbitrage: {type:Boolean, default:false},
+  lastBTCValue: {type:Number, default:0}
 }, {
   timestamps: {
     createdAt: 'created_at',
