@@ -1,39 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  </head>
-  <body>
 
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/home" img src ="./public/stylesheets/img/bitbot.png">LOGO</a>
-        </div>
-        <form action="/logout" method="POST">
-          <ul class="nav navbar-nav">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
 
-              <li><a class="login" href="/signup">signup</a></li>
-              <li><a class="login" href="/login"> login</a></li>
-            
+<body>
 
-          </ul>
-          <button class="btn btn-danger navbar-btn" href="/home">LOGOUT</button>
-        </form>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/users/home" img src="./public/stylesheets/img/bitbot.png">LOGO</a>
       </div>
-    </nav>
+      <form action="/logout" method="POST">
+        <ul class="nav navbar-nav">
+
+          <% if (user){ %>
 
 
-    <%- body -%>
+             <a class="btn btn navbar-btn" href="/users/edit">Edit Profile</a>
+             <a class="btn btn navbar-btn" href="/users/userinfo">Show User</a>
+             <button class="btn btn-danger navbar-btn" href="/home">LOGOUT</button>
+          <% }else{ %>
+
+
+            <li><a class="login" href="/signup">signup</a></li>
+            <li><a class="login" href="/login"> login</a></li>
+
+            <%}%>
+
+
+        </ul>
+
+      </form>
+    </div>
+  </nav>
+
+
+  <%- body -%>
 
     <script src="/javascript/GDAXHandler.js"></script>
     <script src="/javascript/BitfinexHandler.js"></script>
     <script src="/javascript/BitstampHandler.js"></script>
     <script src="/javascript/main.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  </body>
+</body>
+
 </html>
