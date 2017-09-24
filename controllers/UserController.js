@@ -22,11 +22,6 @@ module.exports = {
     })
   },
 
-  logoutUserGet: (req, res) => {
-    res.render('home')
-  },
-
-
   goHomeGet: (req, res) => {
     const userId = req.user._id
     Wallet.find({ownerId: userId})

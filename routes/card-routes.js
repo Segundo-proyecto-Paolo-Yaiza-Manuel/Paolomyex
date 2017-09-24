@@ -8,4 +8,5 @@ cardRoutes.get("/edit-card", ensureLoggedIn('/'), CardController.editCardGet)
 cardRoutes.post("/edit-card", ensureLoggedIn('/'), CardController.editCardPost)
 cardRoutes.get("/show", ensureLoggedIn('/'), CardController.showCardGet)
 cardRoutes.get("/delete" , ensureLoggedIn('/'), CardController.deleteCardGet)
+
 module.exports = cardRoutes

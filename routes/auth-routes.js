@@ -23,6 +23,6 @@ authRoutes.post('/login', passport.authenticate('local-login', {
 }))
 
 
-authRoutes.get("/logout", AuthController.logout)
+authRoutes.post("/logout", AuthController.logout)
 
 module.exports = authRoutes
