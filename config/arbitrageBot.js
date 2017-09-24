@@ -62,16 +62,16 @@ function changeTheWalletOfBTC(originWallet, destinyWallet, mostExpensiveExchange
    .save()
    .then( trade => {
      console.log(`============NUEVA OPERACION: ${trade}=============`);
-     const originWalletAfterTrade = {
-       quantity: 0
-     }
-
+     const originWalletAfterTrade = { quantity: 0 }
      const destinyWalletAfterTrade = {
-       quantity: (originWallet.quantity*mostExpensiveExchange.BTCValue)/cheapestExchange.BTCValue
+       quantity: moneyIfStopsArbitrage/cheapestExchange.BTCValue
      }
 
-     Wallet.findByIdAndUpdate(originWallet._id, originWalletAfterTrade)
-     Wallet.findByIdAndUpdate(destinyWallet._id, destinyWalletAfterTrade)
+     Wallet.findByIdAndUpdate(originWallet._id, originWalletAfterTrade, { new: true })
+     .then(wallet => console.log(`********WALLET ORIGEN DESP DE OPERACION********`, `${wallet}`))
+
+     Wallet.findByIdAndUpdate(destinyWallet._id, destinyWalletAfterTrade, { new: true })
+     .then(wallet => console.log(`********WALLET DESTINO DESP DE OPERACION********`, `${wallet}`))
    })
    .catch(err => console.log(err))
 }
