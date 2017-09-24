@@ -3,6 +3,7 @@ const Wallet = require('../models/Wallet')
 module.exports = {
 
 selectExGet: (req, res) => {
+  console.log("donde vas?")
   res.render('wallets/create')
 },
 
@@ -37,7 +38,7 @@ createWalletGet: (req, res) => {
     if (err) { return next(err); }
 
 
-  res.render('wallets/show', {
+  res.render('auth/login', {
       title:'My Wallets',
       wallets: wallets
     })

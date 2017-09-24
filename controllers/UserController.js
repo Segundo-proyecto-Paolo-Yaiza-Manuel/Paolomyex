@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt")
 
 module.exports = {
   addMoneyToAccount: (req, res) => {
+    console.log('holi')
     const userId = req.user._id
     const cardInfo = {
       cardNumber: req.body.cardNumber,
@@ -12,20 +13,26 @@ module.exports = {
       money: req.body.quantity
     }
 
+
     User.findByIdAndUpdate(userId, cardInfo, { new: true }, (err, theUser) => {
       if (err) return next(err)
 
       req.user = theUser
 
-      res.redirect('/users/home')
+      res.redirect('/home')
     })
+  },
+
+  addMoneyGet:(req,res)=>{
+    res.render('users/addMoneyToAccount')
   },
 
   goHomeGet: (req, res) => {
     const walletOwnerId = req.user._id
+    console.log(req.user)
     Wallet.find({ownerId: walletOwnerId})
     .then( wallet  => {
-      res.render('home', {wallet})
+      res.render('home', {wallet,user:req.user})
     }).catch( err => next(err))
   },
 

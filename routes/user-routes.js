@@ -3,6 +3,7 @@ const userController = require('../controllers/UserController')
 
 router.get('/edit', userController.editUserGet)
 router.post('/edit', userController.editUserPost)
+router.get('/addMoneyToAccount',userController.addMoneyGet)
 router.post('/addMoneyToAccount', userController.addMoneyToAccount)
 router.get('/home', userController.goHomeGet)
 router.get('/userinfo', userController.showUserGet)
