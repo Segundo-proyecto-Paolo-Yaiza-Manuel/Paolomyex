@@ -14,14 +14,10 @@ module.exports = {
       money: req.body.quantity
     }
 
-
-    User.findByIdAndUpdate(userId, cardInfo, { new: true }, (err, theUser) => {
-      if (err) return next(err)
-
-      req.user = theUser
-
-      res.redirect('/home')
-    })
+    User.findByIdAndUpdate(userId, cardInfo, { new: true }).then( result => {
+      req.user = result
+      res.redirect('/users/home')
+    }).catch(err => console.log(err))
   },
 
   addMoneyGet:(req,res)=>{

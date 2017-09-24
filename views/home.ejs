@@ -28,7 +28,12 @@
     </div>
   </nav> -->
 
+  <% if(!user.cardNumber){ %>
+  <h1>To create a wallet, you need money first</h1>
+   <%- include("./users/addMoneyToAccount") %>
 
+  <% }else{ %>
+    <% } %>
   <% if(user) { %>
   <h2>Hola <%= user.firstname %></h2>
   <canvas id="user-money-evolution" data-trade-info="<%= trades %>"></canvas>
