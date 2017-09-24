@@ -123,9 +123,8 @@ module.exports = {
       inArbitrage: false
     }
 
-    Wallet.find({ownerId: userId, quantity: {$gt: 0}})
+    Wallet.findOne({ownerId: userId, quantity: {$gt: 0}})
     .then(wallet => {
-      console.log(wallet);
       if(wallet.exchangeSite == 'Bitstamp'){
         superagent.get('https://www.bitstamp.net/api/ticker')
           .then(ticker => {
