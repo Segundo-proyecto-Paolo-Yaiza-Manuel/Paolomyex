@@ -12,7 +12,7 @@ function getTradesInfo(){
 }
 
 function printTradesInfoChart(trades){
-  const tradesDates = trades.map(trade => trade.created_at)
+  const tradesDates = trades.map(trade => new Date(trade.created_at).toUTCString())
   const tradesMoney = trades.map(trade => trade.moneyIfStopsArbitrage)
   const ctx = $('#user-money-evolution')
   const chart = new Chart(ctx, {
@@ -32,5 +32,7 @@ function printTradesInfoChart(trades){
   })
 
 }
+
+getTradesInfo()
 
 setInterval(getTradesInfo, 1000*60)

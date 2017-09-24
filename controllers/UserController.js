@@ -47,25 +47,17 @@ module.exports = {
       address: req.body.address,
       dniNumber: req.body.username,
       phone: req.body.phoneNumber,
-      email: req.body.email,
-      cardNumber: req.body.cardNumber,
-      cardCVV: req.body.cvv,
-      cardExpiredDate: req.body.expiredDate,
-      money: req.body.quantity
-
+      email: req.body.email
     }
 
-    console.log(userInfo)
+console.log(userInfo);
 
-    User.findByIdAndUpdate(userId, userInfo, {
-      new: true
-    }, (err, theUser) => {
-      if (err) return next(err)
-
-      req.user = theUser
-
-      res.redirect('/users/userinfo')
-    })
+    User.findByIdAndUpdate(userId, userInfo, {new: true})
+      .then(newUser => {
+        req.user = newUser
+        res.redirect('/')
+      })
+      .catch(err => next(err))
   },
 
   showUserGet: (req, res) => {
@@ -164,11 +156,6 @@ module.exports = {
 
   tradesInfoGet: (req, res) => {
     const userId = req.user._id
-    Trade.find({
-        userId: userId
-      })
-      .then(trades => res.status(200).json(trades))
-
     Trade.find({userId: userId})
     .then(trades => res.status(200).json(trades))
   },
@@ -177,6 +164,5 @@ module.exports = {
     const userId = req.user._id
     Trade.find({userId: userId})
     .then(trades => res.render('users/operationsHistory', {trades: trades}))
-
   }
 }
