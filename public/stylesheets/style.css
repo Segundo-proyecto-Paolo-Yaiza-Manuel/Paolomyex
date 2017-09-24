@@ -10,3 +10,13 @@ a {
 .message {
   color: red;
 }
+
+.card{
+
+  background-color: black;
+}
+
+.content{
+  height: 700px;
+  background-color: grey;
+}
