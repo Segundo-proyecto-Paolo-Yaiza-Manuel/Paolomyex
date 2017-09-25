@@ -112,7 +112,7 @@ module.exports = {
 
       req.user = theUser
       console.log(theUser);
-      res.redirect('/users/home')
+      res.redirect('/home')
     })
   },
 
