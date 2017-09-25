@@ -32,7 +32,7 @@ module.exports = function(app) {
 
   app.use(function(req, res, next) {
     res.locals.user = req.user;
-    res.locals.title = 'PAOLOMYEX'
+    res.locals.title = 'BIT BOT'
     next()
   })
 }
