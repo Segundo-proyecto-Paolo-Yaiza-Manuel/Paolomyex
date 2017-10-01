@@ -105,9 +105,7 @@ module.exports = {
       .catch(error => {
         console.log(error)
       })
-    User.findByIdAndUpdate(userId, userInfo, {
-      new: true
-    }, (err, theUser) => {
+    User.findByIdAndUpdate(userId, userInfo, {new: true}, (err, theUser) => {
       if (err) return next(err)
 
       req.user = theUser
@@ -133,8 +131,8 @@ module.exports = {
             User.findByIdAndUpdate(userId, userInfo, {new: true})
               .then(newUser => {
                 req.user = newUser
-                res.redirect('/users/home')
                 Wallet.findByIdAndUpdate(wallet._id, {quantity:0})
+                res.redirect('/users/home')
               })
               .catch(err => console.log(err))
 
@@ -149,8 +147,8 @@ module.exports = {
             User.findByIdAndUpdate(userId, userInfo, {new: true})
               .then(newUser => {
                 req.user = newUser
-                res.redirect('/users/home')
                 Wallet.findByIdAndUpdate(wallet._id, {quantity:0})
+                res.redirect('/users/home')
               })
               .catch(err => console.log(err))
           })

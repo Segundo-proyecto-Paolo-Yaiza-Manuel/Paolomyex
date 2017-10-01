@@ -83,4 +83,9 @@ function displayCheapestOption($parentText, $parentBtns, cheapestOption){
   .attr('data-exchange', `${cheapestOption.exchange}`)
   .attr('data-value', `${cheapestOption.BTCValue}`)
   .text(`Initialize arbitrage with ${cheapestOption.exchange}`).show()
+  $('#stop-arbitrage')
+  .attr('data-exchange', `${cheapestOption.exchange}`)
+  .attr('data-value', `${cheapestOption.BTCValue}`)
+  .text(`Stop arbitrage with ${cheapestOption.exchange}`).show()
+
 }
